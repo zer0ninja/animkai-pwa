@@ -13,10 +13,10 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
+          java-version: '21'
           distribution: 'zulu'
 
       - name: Install Dependencies
@@ -26,16 +26,9 @@ jobs:
 
       - name: Build App
         run: |
-          # Create web directory if missing
           mkdir -p www
-          
-          # Initialize Android if the folder wasn't pushed from Termux
           npx cap add android || echo "Android folder already exists"
-          
-          # Sync configuration (this updates the app name/URL)
           npx cap sync
-          
-          # Enter the android directory and build the APK
           cd android && ./gradlew assembleDebug
 
       - name: Upload APK
