@@ -1,0 +1,9 @@
+{
+  "appId": "to.animekai.app",
+  "appName": "AnimeKai",
+  "webDir": "www",
+  "server": {
+    "url": "https://animekai.to",
+    "cleartext": true
+  }
+}
